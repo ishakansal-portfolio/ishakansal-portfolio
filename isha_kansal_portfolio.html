@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isha Kansal — Writer, Editor & Scholar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --parchment: #f7f3ec;
+    --cream: #ede7d9;
+    --sepia: #8b6f4e;
+    --dusty-rose: #c4a28a;
+    --gold: #b8965a;
+    --deep-wine: #5c2d2d;
+    --sage: #7a8a6e;
+    --muted-teal: #4a6b6b;
+    --paper: #faf7f2;
+    --line: rgba(139, 111, 78, 0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.8;
+    cursor: default;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ─── NAV ─────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(247, 243, 236, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--sepia);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.65;
+    transition: opacity 0.3s, color 0.3s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--deep-wine); }
+
+  /* ─── HERO BANNER (Writer · Editor · Scholar) ── */
+  .hero-banner {
+    background: var(--ink);
+    padding: 4rem 3rem 3rem;
+    text-align: center;
+    margin-top: 58px; /* nav height */
+  }
+
+  .hero-banner-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+
+  .hero-banner-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 300;
+    color: var(--parchment);
+    letter-spacing: 0.04em;
+    line-height: 1.0;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+
+  .hero-banner-name em {
+    font-style: italic;
+    color: var(--dusty-rose);
+  }
+
+  .hero-banner-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.8rem auto;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.5s forwards;
+  }
+
+  .hero-banner-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(247,243,236,0.45);
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.7s forwards;
+  }
+
+  /* ─── HERO SPLIT ──────────────────────── */
+  #home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 3.5rem 5rem 4rem;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--sepia) 30%, var(--sepia) 70%, transparent);
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--sepia);
+    max-width: 380px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2.2rem;
+    background: var(--deep-wine);
+    color: var(--parchment);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--ink); transform: translateY(-2px); }
+
+  .btn-ghost {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sepia);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--deep-wine); border-color: var(--deep-wine); }
+
+  .hero-right {
+    background: var(--parchment);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 3.5rem;
+  }
+
+  .decorative-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 2.1;
+    color: var(--sepia);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+    border-left: 2px solid var(--gold);
+    padding-left: 2rem;
+  }
+
+  .hero-stats {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.2s forwards;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--deep-wine);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    margin-top: 0.4rem;
+    opacity: 0.7;
+  }
+
+  /* ─── DIVIDER ─────────────────────────── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--line), var(--line) 80%, transparent);
+  }
+
+  /* ─── SECTION COMMON ──────────────────── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 3rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--deep-wine); }
+
+  /* ─── ABOUT ───────────────────────────── */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: start;
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-portrait-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-portrait-frame::before {
+    content: 'I K';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--sepia);
+    opacity: 0.25;
+    letter-spacing: 0.3em;
+  }
+
+  .about-portrait-frame::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid var(--line);
+    pointer-events: none;
+  }
+
+  .about-highlights {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .highlight-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--sepia);
+  }
+
+  .highlight-tag::before {
+    content: '◆';
+    font-size: 0.45rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .about-body {
+    font-size: 1.02rem;
+    line-height: 2;
+    color: #3a2e22;
+  }
+
+  .about-body p + p { margin-top: 1.5rem; }
+
+  /* ─── EDITORIAL ───────────────────────── */
+  #editorial {
+    background: var(--cream);
+    padding: 6rem 4rem;
+  }
+
+  #editorial .inner { max-width: 1200px; margin: 0 auto; }
+
+  .editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 3rem;
+  }
+
+  .ed-card {
+    background: var(--parchment);
+    padding: 2.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .ed-card:hover { transform: translateY(-4px); }
+
+  .ed-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), var(--dusty-rose));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .ed-card:hover::before { transform: scaleX(1); }
+
+  .ed-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .ed-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+
+  .ed-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--sepia);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .ed-desc {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: #4a3c2e;
+  }
+
+  /* Books */
+  .books-row {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .book-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 2rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+  }
+
+  .book-spine {
+    width: 52px;
+    min-height: 80px;
+    background: var(--deep-wine);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .book-spine span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.55rem;
+    color: var(--parchment);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .book-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .book-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--sepia);
+    margin-top: 0.3rem;
+    opacity: 0.7;
+  }
+
+  .book-desc {
+    font-size: 0.88rem;
+    color: #4a3c2e;
+    margin-top: 0.7rem;
+    line-height: 1.7;
+  }
+
+  /* ─── TEACHING ────────────────────────── */
+  #teaching {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .teaching-timeline {
+    margin-top: 3rem;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .teaching-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.5rem; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), var(--line));
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0.55rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+
+  .tl-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    letter-spacing: 0.12em;
+    color: var(--sepia);
+    opacity: 0.65;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .tl-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .tl-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted-teal);
+    margin-bottom: 0.9rem;
+  }
+
+  .tl-body {
+    font-size: 0.93rem;
+    line-height: 1.9;
+    color: #3a2e22;
+  }
+
+  .tl-body li {
+    list-style: none;
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.35rem;
+  }
+
+  .tl-body li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--dusty-rose);
+  }
+
+  /* ─── RESEARCH ────────────────────────── */
+  #research {
+    background: linear-gradient(135deg, #f0ebe0 0%, #e8dfd0 100%);
+    padding: 6rem 4rem;
+  }
+
+  #research .inner { max-width: 1200px; margin: 0 auto; }
+
+  .research-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .research-card {
+    background: var(--paper);
+    padding: 2.2rem;
+    border-left: 3px solid var(--deep-wine);
+  }
+
+  .research-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--deep-wine);
+    margin-bottom: 0.7rem;
+  }
+
+  .research-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
+
+  .research-desc {
+    font-size: 0.88rem;
+    line-height: 1.85;
+    color: #4a3c2e;
+  }
+
+  .research-badge {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.3rem 0.8rem;
+    background: var(--cream);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--sepia);
+    border: 1px solid var(--line);
+  }
+
+  .cert-row {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+  }
+
+  .cert-item {
+    background: var(--paper);
+    padding: 1.8rem;
+  }
+
+  .cert-icon {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .cert-text {
+    font-size: 0.87rem;
+    color: #4a3c2e;
+    line-height: 1.7;
+  }
+
+  .cert-text strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ─── SERVICES ────────────────────────── */
+  #services {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 4rem;
+  }
+
+  .services-intro {
+    max-width: 620px;
+    font-size: 1rem;
+    color: #3a2e22;
+    line-height: 2;
+    margin-bottom: 3.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--line);
+  }
+
+  .service-card {
+    background: var(--paper);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card:hover { background: var(--cream); }
+
+  .service-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--cream);
+    position: absolute;
+    top: 0.8rem;
+    right: 1.2rem;
+    line-height: 1;
+    user-select: none;
+    transition: color 0.3s;
+  }
+
+  .service-card:hover .service-number { color: var(--parchment); }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+
+  .service-desc {
+    font-size: 0.87rem;
+    color: #4a3c2e;
+    line-height: 1.85;
+  }
+
+  /* ─── CONTACT ─────────────────────────── */
+  #contact {
+    background: var(--ink);
+    padding: 6rem 4rem;
+  }
+
+  #contact .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-left .section-label { color: var(--dusty-rose); }
+
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-title em { font-style: italic; color: var(--dusty-rose); }
+
+  .contact-note {
+    font-size: 0.93rem;
+    color: rgba(247,243,236,0.6);
+    line-height: 1.9;
+  }
+
+  .contact-links {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+
+  .contact-link:hover { transform: translateX(6px); }
+
+  .contact-link-icon {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(247,243,236,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .contact-link:hover .contact-link-icon {
+    border-color: var(--dusty-rose);
+    background: rgba(196,162,138,0.1);
+  }
+
+  .contact-link-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: rgba(247,243,236,0.75);
+  }
+
+  .contact-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--dusty-rose);
+    line-height: 2;
+    border-left: 2px solid var(--dusty-rose);
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+    opacity: 0.85;
+  }
+
+  .awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .award-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .award-icon { color: var(--gold); font-size: 0.85rem; margin-top: 0.25rem; flex-shrink: 0; }
+
+  .award-text {
+    font-size: 0.88rem;
+    color: rgba(247,243,236,0.65);
+    line-height: 1.7;
+  }
+
+  /* ─── FOOTER ──────────────────────────── */
+  footer {
+    background: #0f0a05;
+    padding: 2.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(139,111,78,0.15);
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--sepia);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: rgba(139,111,78,0.5);
+  }
+
+  /* ─── ANIMATIONS ──────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.hidden {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── RESPONSIVE ──────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .hero-banner { padding: 3rem 1.5rem 2.5rem; }
+    #home { grid-template-columns: 1fr; }
+    .hero-left, .hero-right { padding: 3.5rem 2rem; }
+    #about { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 2rem; }
+    .about-portrait-frame { aspect-ratio: 2/1; }
+    #editorial { padding: 4rem 2rem; }
+    .editorial-grid { grid-template-columns: 1fr; }
+    .books-row { grid-template-columns: 1fr; }
+    #teaching { padding: 4rem 2rem; }
+    #research { padding: 4rem 2rem; }
+    .research-grid { grid-template-columns: 1fr; }
+    .cert-row { grid-template-columns: 1fr; }
+    #services { padding: 4rem 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    #contact { padding: 4rem 2rem; }
+    #contact .inner { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 0.8rem; padding: 2rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Isha Kansal</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#editorial">Editorial</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO BANNER: name + title at very top -->
+<div class="hero-banner">
+  <p class="hero-banner-eyebrow">Writer · Editor · Scholar</p>
+  <h1 class="hero-banner-name">Isha <em>Kansal</em></h1>
+</div>
+
+<!-- HERO SPLIT: verse + CTA -->
+<div id="home" style="background: var(--parchment); padding: 5rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
+  <div class="hero-left" style="border-right: 1px solid var(--line); display:flex; flex-direction:column; justify-content:center; padding: 4rem;">
+    <blockquote class="decorative-verse">
+      "What does it take for a human to turn into a mannequin? —<br>
+      Go tear your clothes in front of a mannequin,<br>
+      cry and howl, whimper and scream,<br>
+      drink poison or even die — it will not move."
+    </blockquote>
+  </div>
+  <div class="hero-right" style="display:flex; flex-direction:column; justify-content:center; padding: 4rem;">
+    <p style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sepia); opacity:0.7; margin-bottom:1.5rem; animation: fadeUp 0.8s ease 0.6s both;">Open to collaboration</p>
+    <div class="hero-cta" style="margin-top:0; animation: fadeUp 0.8s ease 0.8s both; opacity:0;">
+      <a href="#services" class="btn-primary">Work with me</a>
+      <a href="#editorial" class="btn-ghost">View my work ↓</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <div class="about-left">
+    <div class="about-portrait-frame"></div>
+    <div class="about-highlights">
+      <span class="highlight-tag">MA English, Shiv Nadar University — CGPA 9.0</span>
+      <span class="highlight-tag">BA (Hons) English, IMS Unison — CGPA 9.8</span>
+      <span class="highlight-tag">President's Gold Medal recipient</span>
+      <span class="highlight-tag">UGC-NET qualified (99.63 percentile)</span>
+      <span class="highlight-tag">GATE qualified (AIR 279)</span>
+      <span class="highlight-tag">Creative Writing — AshokaX certified</span>
+    </div>
+  </div>
+  <div class="about-right">
+    <p class="section-label">§ 01 — About</p>
+    <h2 class="section-title">A life lived<br><em>between pages</em></h2>
+    <div class="about-body">
+      <p>I am Isha Kansal, a writer, editor, and emerging academician currently pursuing my Master of Arts in English at Shiv Nadar University, Greater Noida. My academic journey has been shaped by a deep love for literature, cinema, and the craft of language itself.</p>
+      <p>I have authored two self-published books of poetry, <em>Learning the Ways of Life</em> and <em>I Told the Stars About You</em>, available on Amazon and Flipkart. I am interested in writing poetry, fiction, and critical essays.</p>
+      <p>Beyond writing, I have served as Chief Editor of <em>The Freewheeler</em>, worked as a Teaching Assistant at Shiv Nadar University, interned at Penguin Random House India and Dehradun Literature Festival and served as a campus ambassador for Teach For India (TFI). My experience working at diverse places has helped me enrich my skill set and learn from experts in different fields.</p>
+      <p>As a scholar, my research interests comprise Partition Literature, Women's writings, Film studies, and pedagogy.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDITORIAL & PUBLISHING -->
+<div id="editorial">
+  <section style="max-width:100%; padding:0;">
+    <div style="background: var(--cream); padding: 6rem 4rem;">
+      <div class="inner">
+        <p class="section-label reveal">§ 02 — Editorial & Publishing</p>
+        <h2 class="section-title reveal">Roles and<br><em>Responsibilities</em></h2>
+
+        <div class="editorial-grid">
+          <div class="ed-card reveal">
+            <div class="ed-org">The Freewheeler</div>
+            <div class="ed-role">Chief Editor</div>
+            <div class="ed-date">Oct 2024 – Present</div>
+            <p class="ed-desc">Curating and editing submissions for the literary magazine. Overseeing the social media team, analysing contemporary trends, proofreading content for publication, and designing editorial templates.</p>
+          </div>
+          <div class="ed-card reveal">
+            <div class="ed-org">Penguin Random House, India</div>
+            <div class="ed-role">Copyediting Intern</div>
+            <div class="ed-date">Dec 2025 – Jan 2026</div>
+            <p class="ed-desc">Copyedited <em>Everybody Loves a Good Drought</em> by Palagummi Sainath. Organised book titles and elements in Excel and deepened understanding of editorial workflows for published texts.</p>
+          </div>
+          <div class="ed-card reveal">
+            <div class="ed-org">Dehradun Literature Festival</div>
+            <div class="ed-role">Intern & Team Lead</div>
+            <div class="ed-date">June 2025 – Dec 2025</div>
+            <p class="ed-desc">Maintained communication with authors, performing artists and creators. Ideated panels, managed social media, and served as Team Lead for three days of festival operations.</p>
+          </div>
+          <div class="ed-card reveal">
+            <div class="ed-org">Valley of Words (VOW)</div>
+            <div class="ed-role">Content Writer</div>
+            <div class="ed-date">Sept – Oct 2023</div>
+            <p class="ed-desc">Analysed and reported on literary events, crafting informative articles for online publication with a focus on clarity, voice, and literary context.</p>
+          </div>
+          <div class="ed-card reveal">
+            <div class="ed-org">Yeh Seher – Ek Pranjal Kavita Sangra</div>
+            <div class="ed-role">Freelance Translator</div>
+            <div class="ed-date">Dec 2022</div>
+            <p class="ed-desc">Translated the author's verses from Hindi to English, developing skills in close reading, proofreading, and the delicate art of literary translation across linguistic registers.</p>
+          </div>
+          <div class="ed-card reveal">
+            <div class="ed-org">Crooked Lines 2024</div>
+            <div class="ed-role">Literary Event Organiser</div>
+            <div class="ed-date">2024</div>
+            <p class="ed-desc">Shortlisted participant stories, designed posters and certificates, managed social media, and coordinated with judges including Professor Sam North and novelist Jerry Pinto.</p>
+          </div>
+        </div>
+
+        <!-- Published Books -->
+        <h3 class="section-title reveal" style="margin-top:5rem; font-size:1.8rem;">Published <em>Works</em></h3>
+        <div class="books-row">
+          <div class="book-card reveal">
+            <div class="book-spine"><span>Learning the Ways of Life</span></div>
+            <div class="book-info">
+              <div class="book-title">Learning the Ways of Life</div>
+              <div class="book-meta">NotionPress · Self-published · May 2022</div>
+              <p class="book-desc">A debut anthology exploring the quiet complexities of growing up: love, loss, and the lessons hidden in ordinary moments. Available on Amazon and Flipkart.</p>
+            </div>
+          </div>
+          <div class="book-card reveal">
+            <div class="book-spine" style="background: var(--muted-teal);"><span>I Told the Stars About You</span></div>
+            <div class="book-info">
+              <div class="book-title"><em>I Told the Stars About You</em></div>
+              <div class="book-meta">NotionPress · Self-published · May 2022</div>
+              <p class="book-desc">A second collection of poetry that turns toward the universe for metaphor, expressing longing through words. Available on Amazon and Flipkart.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other writing credits -->
+        <div style="margin-top:2.5rem;">
+          <div class="book-card reveal">
+            <div class="book-info">
+              <div class="book-title" style="font-style:normal;">Substack — Isha Kansal</div>
+              <div class="book-meta">Jul 2025 – Present</div>
+              <p class="book-desc">Read my latest pieces of poetry, short fiction and critical essays on my Substack account.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEACHING -->
+<section id="teaching" class="reveal">
+  <p class="section-label">§ 03 — Teaching Experience</p>
+  <h2 class="section-title">Classrooms as<br><em>conversations</em></h2>
+
+  <div class="teaching-timeline">
+    <div class="tl-item reveal">
+      <div class="tl-period">Jan 2026 – May 2026</div>
+      <div class="tl-role">Teaching Assistant — Creative Writing</div>
+      <div class="tl-org">Shiv Nadar University, Greater Noida</div>
+      <ul class="tl-body">
+        <li>Teaching Assistant under Dr Vikram Kapur for the undergraduate Creative Writing course.</li>
+        <li>Conducted tutorials and writing workshops, promoted engagement and provided feedback on student drafts.</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-period">Jan 2025 – May 2025</div>
+      <div class="tl-role">Teaching Assistant — Academic Writing</div>
+      <div class="tl-org">Shiv Nadar University, Greater Noida</div>
+      <ul class="tl-body">
+        <li>Worked under Dr Samiksha Bajpai for the undergraduate Academic Writing course.</li>
+        <li>Conducted tutorials, promoted class participation, reviewed drafts and provided constructive feedback.</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-period">Aug 2024 – Nov 2024</div>
+      <div class="tl-role">Research & Curriculum Assistant</div>
+      <div class="tl-org">Under Dr Sambudha Sen, Shiv Nadar University</div>
+      <ul class="tl-body">
+        <li>Designed curricula for undergraduate students; proofread and updated library catalogues.</li>
+        <li>Managed ongoing research projects and developed proficiency in Excel, Canva, Google Forms, and PowerPoint.</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-period">Aug 2025 – Dec 2025</div>
+      <div class="tl-role">Head of Operations</div>
+      <div class="tl-org">Incisive-CUL, Dehradun</div>
+      <ul class="tl-body">
+        <li>Managed social media platforms and conducted outreach programs; organised monthly events and developed a learner-performer community across Dehradun and nearby cities.</li>
+        <li>Initiated communication with poets, writers, scholars, and researchers for institutional collaboration.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESEARCH -->
+<div id="research">
+  <section style="max-width:100%; padding:0;">
+    <div style="background: linear-gradient(135deg, #f0ebe0 0%, #e8dfd0 100%); padding: 6rem 4rem;">
+      <div class="inner">
+        <p class="section-label reveal">§ 04 — Research & Publications</p>
+        <h2 class="section-title reveal">Analysing texts,<br><em>brainstorming ideas</em></h2>
+
+        <div class="research-grid">
+          <div class="research-card reveal">
+            <div class="research-type">Peer-Reviewed Paper</div>
+            <div class="research-title">Representation of Women in Hindi Cinema: Examining Five Hindi Movies Using the Bechdel-Wallace Test</div>
+            <p class="research-desc">Co-authored paper published in <em>Pragyaan</em>, a bi-annual UGC-Care Listed Journal of Mass Communication. The study applies feminist film criticism to interrogate gender representation in mainstream Bollywood cinema.</p>
+            <span class="research-badge">UGC-Care Listed Journal</span>
+          </div>
+          <div class="research-card reveal">
+            <div class="research-type">Graduation Dissertation</div>
+            <div class="research-title">Narrative Experimentation and Metafiction in Calvino and Borges</div>
+            <p class="research-desc">Analysed metafictional elements and narrative experimentation in Italo Calvino's <em>If on a Winter's Night a Traveller</em> and Jorge Luis Borges' <em>Labyrinths</em>, examining the distinctive narrative devices both authors employ to transcend conventional storytelling.</p>
+            <span class="research-badge">Dec 2023 – Mar 2024</span>
+          </div>
+          <div class="research-card reveal">
+            <div class="research-type">Post-Graduation Thesis</div>
+            <div class="research-title">Partition Literature · Literary Censorship · PWA</div>
+            <p class="research-desc">MA research explores the relationship between literary censorship and the Progressive Writers' Association (PWA), with a focus on the censored texts of Sajjad Zaheer, Rashid Jahan, Saadat Hasan Manto and Ismat Chughtai.</p>
+            <span class="research-badge">MA English — Ongoing</span>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <h3 class="section-title reveal" style="margin-top:5rem; font-size:1.8rem;">Certifications & <em>Qualifications</em></h3>
+        <div class="cert-row">
+          <div class="cert-item reveal">
+            <div class="cert-text">
+              <strong>UGC-NET Qualified</strong>
+              Assistant Professor eligibility with 99.63 percentile ranking.
+            </div>
+          </div>
+          <div class="cert-item reveal">
+            <div class="cert-text">
+              <strong>GATE Qualified</strong>
+              All India Rank 279 in the GATE examination.
+            </div>
+          </div>
+          <div class="cert-item reveal">
+            <div class="cert-text">
+              <strong>AshokaX — Creative Writing</strong>
+              Certificate in Leadership and Selfhood through Creative Writing, Ashoka University.
+            </div>
+          </div>
+          <div class="cert-item reveal">
+            <div class="cert-icon">🇫🇷</div>
+            <div class="cert-text">
+              <strong>French Language — A1</strong>
+              Certified completion of A1-level French language study.
+            </div>
+          </div>
+          <div class="cert-item reveal">
+            <div class="cert-text">
+              <strong>President's Gold Medal</strong>
+              For outstanding academic performance and extracurricular excellence, awarded by IMS Unison University.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label reveal">§ 05 — Services</p>
+  <h2 class="section-title reveal">What I can<br><em>do for you</em></h2>
+  <p class="services-intro reveal">Whether you need careful eyes on a manuscript, a creative mind for your content, or a patient educator for teaching English, I bring academic rigour and creative sensitivity to every collaboration.</p>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-number">01</div>
+      <div class="service-name">Copyediting & Proofreading</div>
+      <p class="service-desc">Meticulous line-level editing for manuscripts, essays, articles, and academic papers.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-number">02</div>
+      <div class="service-name">Creative Writing Workshops</div>
+      <p class="service-desc">One-to-one or group workshops in poetry, fiction, and creative nonfiction. Structured around close reading, draft feedback, and developing a confident authorial voice.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-number">03</div>
+      <div class="service-name">Tutoring and Teaching</div>
+      <p class="service-desc">Curriculum planning and academic guidance for undergraduate and postgraduate students in the humanities, especially English literature.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-number">04</div>
+      <div class="service-name">Translation (Hindi–English)</div>
+      <p class="service-desc">Literary and general translation from Hindi to English, attentive to tone, register, and cultural nuance. Experience with poetry and prose.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-number">05</div>
+      <div class="service-name">Content Writing & Blogging</div>
+      <p class="service-desc">Research-backed articles, blog posts, and essays for literary organisations, cultural platforms, and educational institutions.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-number">06</div>
+      <div class="service-name">Spoken Word & Poetry Performance</div>
+      <p class="service-desc">Available for literary events, open mics, and cultural festivals as a spoken word performer and MC. Former semi-finalist at Spill Summer Slam and City Leader in Dehradun for Kommune.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-number">07</div>
+      <div class="service-name">Festival & Event Organisation</div>
+      <p class="service-desc">End-to-end literary festival planning, panel curation, volunteer management, and public relations. Experienced leading teams at the Dehradun Literature Festival (DLF) and The Incisive Festival (TIF).</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div style="background: var(--ink); padding: 6rem 4rem;">
+    <div class="inner">
+      <div class="contact-left">
+        <p class="section-label reveal">§ 06 — Contact</p>
+        <h2 class="contact-title reveal">Let's begin<br>a <em>conversation</em></h2>
+        <p class="contact-note reveal">I am open to editorial collaborations, teaching opportunities, research partnerships, and creative projects. Please feel free to reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:ishakansal36@gmail.com" class="contact-link reveal">
+            <div class="contact-link-icon">✉</div>
+            <span class="contact-link-text">ishakansal36@gmail.com</span>
+          </a>
+          <a href="https://www.instagram.com/notalwaysisha" target="_blank" class="contact-link reveal">
+            <div class="contact-link-icon">◈</div>
+            <span class="contact-link-text">@notalwaysisha</span>
+          </a>
+          <a href="https://www.linkedin.com/in/isha-kansal-58a8b7223" target="_blank" class="contact-link reveal">
+            <div class="contact-link-icon">in</div>
+            <span class="contact-link-text">linkedin.com/in/isha-kansal-58a8b7223</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <blockquote class="contact-quote reveal">
+          "I am a woman who yearns, and this yearning is what keeps me alive."
+        </blockquote>
+        <p class="contact-note reveal" style="color: rgba(247,243,236,0.5); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 2; padding-left: 2rem; border-left: 1px solid rgba(196,162,138,0.3);">
+          I write to understand. I teach to share. I edit to refine. Every collaboration is a small act of attention — and attention, I believe, is the most honest form of care.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Isha Kansal</div>
+  <div class="footer-copy">© 2026 · Writer · Editor · Scholar · All rights reserved</div>
+</footer>
+
+<script>
+  // Only apply animation if IntersectionObserver is supported
+  if ('IntersectionObserver' in window) {
+    const reveals = document.querySelectorAll('.reveal');
+    // Mark hidden after a tiny delay so elements are visible if JS is slow
+    setTimeout(() => {
+      reveals.forEach(el => el.classList.add('hidden'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.remove('hidden');
+              entry.target.classList.add('visible');
+            }, i * 60);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(el => observer.observe(el));
+    }, 100);
+  }
+
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
